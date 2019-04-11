@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="TBdelimoe" HorizontalAlignment="Left" Height="23" Margin="22,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBdelitel" HorizontalAlignment="Left" Height="23" Margin="166,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Button1" Content="Button" HorizontalAlignment="Left" Margin="166,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="TextBox3" HorizontalAlignment="Left" Height="132" Margin="22,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" Margin="151,22,0,0" VerticalAlignment="Top" Width="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,59,0,0" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="TBResult" HorizontalAlignment="Left" Height="23" Margin="166,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>

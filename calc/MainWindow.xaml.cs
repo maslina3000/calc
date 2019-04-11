@@ -24,5 +24,39 @@ namespace calc
         {
             InitializeComponent();
         }
+        double delimoe = 0;
+        double delitel = 0;
+        double chastnoe = 0;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TBdelimoe.Text = TBdelimoe.Text.Replace(".", ",");
+            TBdelitel.Text = TBdelitel.Text.Replace(".", ",");
+            try
+            {
+                delimoe = Convert.ToDouble(TBdelimoe.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат данных", "Error", MessageBoxButton.OK);
+            }
+            try
+            {
+                delitel = Convert.ToDouble(TBdelitel.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат данных", "Error", MessageBoxButton.OK);
+            }
+            
+             
+            chastnoe = delimoe / delitel;
+
+            // это будет что-то тип вывода результата
+           // for (int i = 0; i < 100; i++)
+            //{
+                TBResult.Text = Convert.ToString(chastnoe); 
+        //    }
+        }
     }
 }
