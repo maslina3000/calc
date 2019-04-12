@@ -13,7 +13,15 @@
         <TextBox x:Name="TextBox3" HorizontalAlignment="Left" Height="132" Margin="22,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" Margin="151,22,0,0" VerticalAlignment="Top" Width="1"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,59,0,0" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="TBResult" HorizontalAlignment="Left" Height="23" Margin="166,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,140,0,0"/>
+        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" Margin="166,190,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="zero" Content="Label" HorizontalAlignment="Left" Margin="166,271,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="mn1" HorizontalAlignment="Left" Height="23" Margin="536,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="mn2" HorizontalAlignment="Left" Height="23" Margin="536,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="X" HorizontalAlignment="Left" Margin="513,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="res" Content="Label" HorizontalAlignment="Left" Margin="167,72,0,0" VerticalAlignment="Top" Height="33" Width="142"/>
+        <Button x:Name="umnj" Content="Button" HorizontalAlignment="Left" Margin="700,121,0,0" VerticalAlignment="Top" Width="75" Click="Umnj_Click"/>
+        <Label x:Name="resmn" Content="Label" HorizontalAlignment="Left" Margin="536,121,0,0" VerticalAlignment="Top" Height="222" Width="120"/>
 
     </Grid>
 </Window>
