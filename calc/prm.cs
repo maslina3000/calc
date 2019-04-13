@@ -18,5 +18,9 @@ namespace calc
         public static double mnj2;
         public static int delimoeln;
         public static int delitelln;
+        public static int celoe;
+        public static int ostat; //может хватит уже
+        //public static in...... ОСТАНОВИТЕСЬ
+        public static string ostatok;
     }
 }

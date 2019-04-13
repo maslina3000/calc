@@ -32,6 +32,7 @@ namespace calc
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             TBdelimoe.Text = TBdelimoe.Text.Replace(".", ",");
             TBdelitel.Text = TBdelitel.Text.Replace(".", ",");
             try
@@ -57,6 +58,7 @@ namespace calc
 
             int pDelim = CounterDelimoe(prm.delim);
             int pDelit = CounterDelitel(prm.delit);
+            
             // отсечение запятой
             if (pDelim > pDelit)
             {
@@ -74,36 +76,51 @@ namespace calc
             }
 
 
-            label1.Content = Convert.ToString(pDelim);
-            label2.Content = Convert.ToString(pDelit);
+            label1.Content = Convert.ToString(prm.delimoe);
+            label2.Content = Convert.ToString(prm.delitel);
 
             //длина делимого и делителя
             prm.delimoeln = Convert.ToInt16(Convert.ToString(prm.delimoe).Length);
             prm.delitelln = Convert.ToInt16(Convert.ToString(prm.delitel).Length);
 
 
-           // ostatok(prm.delimoe, prm.delitel, prm.chastnoe);
-            res.Content = Convert.ToString(prm.chastnoe + "."+ Convert.ToString(prm.result));
+            // ostatok(prm.delimoe, prm.delitel, prm.chastnoe);
+            ost(prm.delimoe, prm.delitel);
+            
+            res.Content = Convert.ToString(prm.celoe + "."+ prm.ostatok );
 
-
+            
 
         }
-        
-      /*  public static int ostatok(int delimoe, int delitel, int chastnoe)
+        public static int ost(int delimoe, int delitel)
         {
-            
-            string ost = "";
-            prm.chastnoe = prm.delimoe / prm.delitel;
+            prm.ostatok = "";
+           // prm.celoe = prm.delimoe / prm.delitel;
 
-            for (int k = 0; k < 10; k++)
+            prm.ostat = prm.delimoe;
+            prm.result = prm.celoe;
+            Console.WriteLine("celoe " + prm.celoe);
+          //расчёт остатка
+            for (int i = 0; i<15; i++)
             {
-                int res = delimoe - (delitel * chastnoe);
-                prm.result = res / delitel;
-                ost = Convert.ToString(prm.result);
+                prm.ostat = prm.ostat - (prm.result * prm.delitel);
+               // Console.WriteLine("ostat ");
+                //Console.WriteLine(prm.ostat);
+                if (prm.ostat < prm.delitel)
+                {
+                    prm.ostat = Convert.ToInt32(Convert.ToString(prm.ostat) + "0");
+                }
+                prm.result = prm.ostat / prm.delitel;
+               // Console.WriteLine("result ");
+               // Console.WriteLine(prm.result);
+                prm.ostatok = prm.ostatok + Convert.ToString(prm.result);
+                //Console.WriteLine("ostatok ");
+               // Console.WriteLine(prm.ostatok);
             }
-            return prm.result;
-
-        }*/
+                return prm.ostat;
+        }
+        
+      
         // кол-во символов после запятой в делимом
         public static int CounterDelimoe(double delimoe)
         {
@@ -131,20 +148,11 @@ namespace calc
             mn2.Text = mn2.Text.Replace(".", ",");
                 prm.mnj1 = Convert.ToDouble(mn1.Text);
                 prm.mnj2 = Convert.ToDouble(mn2.Text);
-            string s = GetAnswer(prm.mnj1, prm.mnj2);
+            string s = umnozh(prm.mnj1, prm.mnj2);
             resmn.Content= s;
         }
-       /*
-        public static int Countermnj1(double mnj1)
-        {
-            return mnj1.ToString().Substring(mnj1.ToString().IndexOf(",") + 1).Length;
-        }
-        public static int Countermnj2(double mnj2)
-        {
-            return mnj2.ToString().Substring(mnj2.ToString().IndexOf(",") + 1).Length;
-        }
-        */
-        private static string GetAnswer(double mnj1, double mnj2)
+       
+        private static string umnozh(double mnj1, double mnj2)
         {
             string add = "";
             string result = "";
@@ -157,6 +165,7 @@ namespace calc
             result += mnj1 * mnj2;
             return result;
         }
+        /////////////Умножение///////////////////////////////////////////////////////////////////////////
     }
 
 }
