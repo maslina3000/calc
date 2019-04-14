@@ -67,8 +67,8 @@ namespace calc
                 TBdelimoe.Text = Convert.ToString(prm.delimoe);
             }
 
-            label1.Content = Convert.ToString(prm.delimoe);
-            label2.Content = Convert.ToString(prm.delitel);
+          //  label1.Content = Convert.ToString(prm.delimoe);
+          //  label2.Content = Convert.ToString(prm.delitel);
 
             //длина делимого и делителя
             prm.delimoeln = Convert.ToInt16(Convert.ToString(prm.delimoe).Length);
@@ -91,9 +91,8 @@ namespace calc
             prm.celoe = prm.delimoe / prm.delitel;
             prm.ostat = prm.delimoe;
             prm.result = prm.celoe;
-            Console.WriteLine("celoe " + prm.cel);
+            Console.WriteLine("celoe " + prm.celoe);
             //расчёт остатка
-           // MainWindow mainWindow = this. MainWindow();
             for (int i = 0; i<15; i++)
             {
                 prm.ostat = prm.ostat - (prm.result * prm.delitel);
@@ -145,19 +144,85 @@ namespace calc
         {
             string add = "";
             string result = "";
+            double res = 0;
             foreach (char c in mnj1.ToString().Reverse())
             {
                 result += char.GetNumericValue(c) * mnj2 + add + "\r\n" + "+" + "\r\n";
+                res += char.GetNumericValue(c) * mnj2;
+                Console.WriteLine(res);
                 add += "0";
             }
             result += "__________\r\n";
+            
             result += mnj1 * mnj2;
             return result;
         }
-            /////////////Умножение///////////////////////////////////////////////////////////////////////////
-        
-        //// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//////////////////
+        /////////////Умножение///////////////////////////////////////////////////////////////////////////
 
+        //// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//////////////////
+        ///-----
+         // колво знаков после запятой в уменьшаемом
+        public static int Counterumn(double umenshaemoe)
+        {
+            return prm.umenshaemoe.ToString().Substring(prm.umenshaemoe.ToString().IndexOf(",") + 1).Length;
+        }
+        //  в вычитаемом
+        public static int Countervic(double vichetaemoe)
+        {
+            return prm.vichetaemoe.ToString().Substring(prm.vichetaemoe.ToString().IndexOf(",") + 1).Length;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            umensh.Text = umensh.Text.Replace(".", ",");
+            vich.Text = vich.Text.Replace(".", ",");
+            try
+            {
+                prm.umenshaemoe = Convert.ToDouble(umensh.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат данных", "Error", MessageBoxButton.OK);
+            }
+            try
+            {
+                prm.vichetaemoe = Convert.ToDouble(vich.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат данных", "Error", MessageBoxButton.OK);
+            }
+
+            int shumensh = Counterumn(prm.umenshaemoe);
+            int shvich = Countervic(prm.vichetaemoe);
+
+            dlumns.Content = shumensh;
+            dlvct.Content = shvich;
+            //string vichet = "";
+            string vichet = Convert.ToString(prm.vichetaemoe);
+            //string umenshm = "";
+            string umenshm = Convert.ToString(prm.umenshaemoe);
+            if (shumensh > shvich)
+            {
+                int k = shumensh - shvich;
+                for (int i = 0; i < k; i++)
+                {
+                    vichet= vichet + "0";
+                    // vich.Text = Convert.ToString(prm.vichetaemoe);
+                    vich.Text = vichet;
+                }
+            }
+            else
+            {
+                int k =  shvich - shumensh;
+                for (int i = 0; i < k; i++)
+                {
+                    umenshm = umenshm + "0";
+                    umensh.Text = umenshm;
+                }
+            }
+
+        }
     }
 
 }

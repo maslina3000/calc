@@ -10,7 +10,6 @@ namespace calc
     {
         public static double delim;
         public static double delit;
-        public static int chastnoe;
         public static int delimoe;
         public static int delitel;
         public static int result;
@@ -19,10 +18,11 @@ namespace calc
         public static int delimoeln;
         public static int delitelln;
         public static int celoe;
-        public static int cel;
         public static int ostat; //может хватит уже
         //public static in...... ОСТАНОВИТЕСЬ
         public static string ostatok;
         public static string znak;
+        public static double umenshaemoe;
+        public static double vichetaemoe;
     }
 }

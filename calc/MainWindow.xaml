@@ -13,21 +13,23 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="TBdelimoe" HorizontalAlignment="Left" Height="23" Margin="22,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TBdelitel" HorizontalAlignment="Left" Height="23" Margin="166,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Button1" Content="Button" HorizontalAlignment="Left" Margin="166,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="Button1" Content="Разделить" HorizontalAlignment="Left" Margin="166,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" Margin="151,22,0,0" VerticalAlignment="Top" Width="1"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,59,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,213,0,0"/>
-        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" Margin="22,263,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="zero" Content="Label" HorizontalAlignment="Left" Margin="22,344,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="mn1" HorizontalAlignment="Left" Height="23" Margin="536,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <TextBox x:Name="mn2" HorizontalAlignment="Left" Height="23" Margin="536,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <Label Content="X" HorizontalAlignment="Left" Margin="513,54,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="res" Content="Label" HorizontalAlignment="Left" Margin="167,72,0,0" VerticalAlignment="Top" Height="33" Width="304"/>
-        <Button x:Name="umnj" Content="Button" HorizontalAlignment="Left" Margin="86.4,121,0,0" VerticalAlignment="Top" Width="75" Click="Umnj_Click" Grid.Column="1"/>
-        <Label x:Name="resmn" Content="Label" HorizontalAlignment="Left" Margin="536,121,0,0" VerticalAlignment="Top" Height="222" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="167,196,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="167,225,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="resdel" Content="Label" HorizontalAlignment="Left" Margin="22,60,0,0" VerticalAlignment="Top" Height="138" Width="120"/>
+        <Label x:Name="res" Content="result" HorizontalAlignment="Left" Margin="167,72,0,0" VerticalAlignment="Top" Height="33" Width="304"/>
+        <Button x:Name="umnj" Content="Умножить" HorizontalAlignment="Left" Margin="86.4,121,0,0" VerticalAlignment="Top" Width="75" Click="Umnj_Click" Grid.Column="1"/>
+        <Label x:Name="resmn" Content="result" HorizontalAlignment="Left" Margin="448,121,0,0" VerticalAlignment="Top" Height="248" Width="208" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="umensh" HorizontalAlignment="Left" Height="23" Margin="32,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="vich" HorizontalAlignment="Left" Height="23" Margin="32,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="resdel" Content="Label" HorizontalAlignment="Left" Margin="22,60,0,0" VerticalAlignment="Top" Height="80" Width="120"/>
+        <Button Content="Вычесть" HorizontalAlignment="Left" Margin="166,201,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="32,236,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="32,236,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="dlumns" Content="Label" HorizontalAlignment="Left" Margin="355,140,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="dlvct" Content="Label" HorizontalAlignment="Left" Margin="355,171,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
