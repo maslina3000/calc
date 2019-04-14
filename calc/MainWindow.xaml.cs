@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 
 namespace calc
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
-        /// <summary>
         /// ///////////////////////////////////////////////ДелениеДелениеДеление//////////////////////////////////////////////////////////////////
-        /// </summary>
-        
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -51,7 +44,6 @@ namespace calc
             {
                 MessageBox.Show("Неверный формат данных", "Error", MessageBoxButton.OK);
             }
-
 
             CounterDelitel(prm.delit);
             CounterDelimoe(prm.delim);
@@ -75,7 +67,6 @@ namespace calc
                 TBdelimoe.Text = Convert.ToString(prm.delimoe);
             }
 
-
             label1.Content = Convert.ToString(prm.delimoe);
             label2.Content = Convert.ToString(prm.delitel);
 
@@ -83,45 +74,51 @@ namespace calc
             prm.delimoeln = Convert.ToInt16(Convert.ToString(prm.delimoe).Length);
             prm.delitelln = Convert.ToInt16(Convert.ToString(prm.delitel).Length);
 
-
-            // ostatok(prm.delimoe, prm.delitel, prm.chastnoe);
             ost(prm.delimoe, prm.delitel);
-            
-            res.Content = Convert.ToString(prm.celoe + "."+ prm.ostatok );
-
-            
-
+            res.Content = Convert.ToString(prm.znak + prm.celoe + "."+ prm.ostatok );
         }
         public static int ost(int delimoe, int delitel)
         {
             prm.ostatok = "";
-           // prm.celoe = prm.delimoe / prm.delitel;
+            prm.znak = "";
+            if (prm.delitel < 0 ^ prm.delimoe < 0 )
+            {
+                prm.znak = "-";
+            }
+            prm.delitel = Math.Abs(prm.delitel);
+            prm.delimoe = Math.Abs(prm.delimoe);
 
+            prm.celoe = prm.delimoe / prm.delitel;
             prm.ostat = prm.delimoe;
             prm.result = prm.celoe;
-            Console.WriteLine("celoe " + prm.celoe);
-          //расчёт остатка
+            Console.WriteLine("celoe " + prm.cel);
+            //расчёт остатка
+           // MainWindow mainWindow = this. MainWindow();
             for (int i = 0; i<15; i++)
             {
                 prm.ostat = prm.ostat - (prm.result * prm.delitel);
-               // Console.WriteLine("ostat ");
-                //Console.WriteLine(prm.ostat);
+                if (prm.ostat == 0)
+                {
+                    break;
+                }
+                
+                //resdel.Content =
+                Console.WriteLine("ostat " + prm.ostat);               // ("ostat " + prm.ostat);
                 if (prm.ostat < prm.delitel)
                 {
                     prm.ostat = Convert.ToInt32(Convert.ToString(prm.ostat) + "0");
                 }
                 prm.result = prm.ostat / prm.delitel;
-               // Console.WriteLine("result ");
-               // Console.WriteLine(prm.result);
-                prm.ostatok = prm.ostatok + Convert.ToString(prm.result);
-                //Console.WriteLine("ostatok ");
-               // Console.WriteLine(prm.ostatok);
+               //resdel.Content = ("result " + prm.result);
+               Console.WriteLine("result " + prm.result);
+               prm.ostatok = prm.ostatok + Convert.ToString(prm.result);
+               Console.WriteLine("ostatok "+ prm.ostatok);
+                
             }
                 return prm.ostat;
         }
         
-      
-        // кол-во символов после запятой в делимом
+      // кол-во символов после запятой в делимом
         public static int CounterDelimoe(double delimoe)
         {
             return delimoe.ToString().Substring(delimoe.ToString().IndexOf(",") + 1).Length;
@@ -132,24 +129,16 @@ namespace calc
             return delitel.ToString().Substring(delitel.ToString().IndexOf(",") + 1).Length;
         }
 
-
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////ДелениеДелениеДеление/////////////////////////
-        ///
+            ////////////////////////////////////////////////////////////////////////////////////////////////////ДелениеДелениеДеление/////////////////////////
         //Умножение
-
-
-       
         private void Umnj_Click(object sender, RoutedEventArgs e)
         {
             mn1.Text = mn1.Text.Replace(".", ",");
             mn2.Text = mn2.Text.Replace(".", ",");
                 prm.mnj1 = Convert.ToDouble(mn1.Text);
                 prm.mnj2 = Convert.ToDouble(mn2.Text);
-            string s = umnozh(prm.mnj1, prm.mnj2);
-            resmn.Content= s;
+            string res = umnozh(prm.mnj1, prm.mnj2);
+            resmn.Content= res;
         }
        
         private static string umnozh(double mnj1, double mnj2)
@@ -165,7 +154,10 @@ namespace calc
             result += mnj1 * mnj2;
             return result;
         }
-        /////////////Умножение///////////////////////////////////////////////////////////////////////////
+            /////////////Умножение///////////////////////////////////////////////////////////////////////////
+        
+        //// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//////////////////
+
     }
 
 }
