@@ -50,7 +50,7 @@ namespace calc
 
             int pDelim = CounterDelimoe(prm.delim);
             int pDelit = CounterDelitel(prm.delit);
-            
+
             // отсечение запятой
             if (pDelim > pDelit)
             {
@@ -67,21 +67,21 @@ namespace calc
                 TBdelimoe.Text = Convert.ToString(prm.delimoe);
             }
 
-          //  label1.Content = Convert.ToString(prm.delimoe);
-          //  label2.Content = Convert.ToString(prm.delitel);
+            //  label1.Content = Convert.ToString(prm.delimoe);
+            //  label2.Content = Convert.ToString(prm.delitel);
 
             //длина делимого и делителя
             prm.delimoeln = Convert.ToInt16(Convert.ToString(prm.delimoe).Length);
             prm.delitelln = Convert.ToInt16(Convert.ToString(prm.delitel).Length);
 
             ost(prm.delimoe, prm.delitel);
-            res.Content = Convert.ToString(prm.znak + prm.celoe + "."+ prm.ostatok );
+            divres.Content = Convert.ToString(prm.znak + prm.celoe + "." + prm.ostatok);
         }
         public static int ost(int delimoe, int delitel)
         {
             prm.ostatok = "";
             prm.znak = "";
-            if (prm.delitel < 0 ^ prm.delimoe < 0 )
+            if (prm.delitel < 0 ^ prm.delimoe < 0)
             {
                 prm.znak = "-";
             }
@@ -93,14 +93,14 @@ namespace calc
             prm.result = prm.celoe;
             Console.WriteLine("celoe " + prm.celoe);
             //расчёт остатка
-            for (int i = 0; i<15; i++)
+            for (int i = 0; i < 15; i++)
             {
                 prm.ostat = prm.ostat - (prm.result * prm.delitel);
                 if (prm.ostat == 0)
                 {
                     break;
                 }
-                
+
                 //resdel.Content =
                 Console.WriteLine("ostat " + prm.ostat);               // ("ostat " + prm.ostat);
                 if (prm.ostat < prm.delitel)
@@ -108,16 +108,16 @@ namespace calc
                     prm.ostat = Convert.ToInt32(Convert.ToString(prm.ostat) + "0");
                 }
                 prm.result = prm.ostat / prm.delitel;
-               //resdel.Content = ("result " + prm.result);
-               Console.WriteLine("result " + prm.result);
-               prm.ostatok = prm.ostatok + Convert.ToString(prm.result);
-               Console.WriteLine("ostatok "+ prm.ostatok);
-                
+                //resdel.Content = ("result " + prm.result);
+                Console.WriteLine("result " + prm.result);
+                prm.ostatok = prm.ostatok + Convert.ToString(prm.result);
+                Console.WriteLine("ostatok " + prm.ostatok);
+
             }
-                return prm.ostat;
+            return prm.ostat;
         }
-        
-      // кол-во символов после запятой в делимом
+
+        // кол-во символов после запятой в делимом
         public static int CounterDelimoe(double delimoe)
         {
             return delimoe.ToString().Substring(delimoe.ToString().IndexOf(",") + 1).Length;
@@ -128,32 +128,32 @@ namespace calc
             return delitel.ToString().Substring(delitel.ToString().IndexOf(",") + 1).Length;
         }
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////ДелениеДелениеДеление/////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////ДелениеДелениеДеление/////////////////////////
         //Умножение
         private void Umnj_Click(object sender, RoutedEventArgs e)
         {
             mn1.Text = mn1.Text.Replace(".", ",");
             mn2.Text = mn2.Text.Replace(".", ",");
-                prm.mnj1 = Convert.ToDouble(mn1.Text);
-                prm.mnj2 = Convert.ToDouble(mn2.Text);
+            prm.mnj1 = Convert.ToDouble(mn1.Text);
+            prm.mnj2 = Convert.ToDouble(mn2.Text);
             string res = umnozh(prm.mnj1, prm.mnj2);
-            resmn.Content= res;
+            resmn.Content = res;
         }
-       
+
         private static string umnozh(double mnj1, double mnj2)
         {
             string add = "";
             string result = "";
-            double res = 0;
+            // double res = 0;
             foreach (char c in mnj1.ToString().Reverse())
             {
                 result += char.GetNumericValue(c) * mnj2 + add + "\r\n" + "+" + "\r\n";
-                res += char.GetNumericValue(c) * mnj2;
-                Console.WriteLine(res);
+                //res += char.GetNumericValue(c) * mnj2;
+                //Console.WriteLine(res);
                 add += "0";
             }
             result += "__________\r\n";
-            
+
             result += mnj1 * mnj2;
             return result;
         }
@@ -171,6 +171,7 @@ namespace calc
         {
             return prm.vichetaemoe.ToString().Substring(prm.vichetaemoe.ToString().IndexOf(",") + 1).Length;
         }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -198,30 +199,84 @@ namespace calc
 
             dlumns.Content = shumensh;
             dlvct.Content = shvich;
-            //string vichet = "";
-            string vichet = Convert.ToString(prm.vichetaemoe);
-            //string umenshm = "";
-            string umenshm = Convert.ToString(prm.umenshaemoe);
+            prm.vichet = Convert.ToString(prm.vichetaemoe);
+            prm.umenshm = Convert.ToString(prm.umenshaemoe);
             if (shumensh > shvich)
             {
                 int k = shumensh - shvich;
                 for (int i = 0; i < k; i++)
                 {
-                    vichet= vichet + "0";
-                    // vich.Text = Convert.ToString(prm.vichetaemoe);
-                    vich.Text = vichet;
+                    prm.vichet = prm.vichet + "0";
+                    vich.Text = prm.vichet;
                 }
             }
             else
             {
-                int k =  shvich - shumensh;
+                int k = shvich - shumensh;
                 for (int i = 0; i < k; i++)
                 {
-                    umenshm = umenshm + "0";
-                    umensh.Text = umenshm;
+                    prm.umenshm = prm.umenshm + "0";
+                    umensh.Text = prm.umenshm;
                 }
             }
 
+            string celumendl = Convert.ToString(Math.Truncate(prm.umenshaemoe));
+            string celvichdl = Convert.ToString(Math.Truncate(prm.vichetaemoe));
+            umdl.Content = celumendl.Length;
+            vcdl.Content = celvichdl.Length;
+
+            if (celumendl.Length > celvichdl.Length)
+            {
+                int k = celumendl.Length - celvichdl.Length;
+                for (int i = 0; i < k; i++)
+                {
+                    prm.vichet = prm.vichet.Insert(0, "0");
+                    vich.Text = prm.vichet;
+                }
+            }
+            else
+            {
+                int k = celvichdl.Length - celumendl.Length;
+                for (int i = 0; i < k; i++)
+                {
+                    prm.umenshm = prm.umenshm.Insert(0, "0");
+                    umensh.Text = prm.umenshm;
+                }
+            }
+
+             //slozh(prm.vichet, prm.umenshm);
+            Console.WriteLine("prm.res " + prm.res);
+            
+            vicres.Content = slozh(prm.vichet, prm.umenshm);
+        }
+        public static string slozh(string vichet, string umenshm)
+        { int k = 0;
+            prm.res = "";
+            int j = prm.umenshm.Length;
+            
+            for (int i = prm.umenshm.Length; i == 0 ; i--)
+            {
+                char um = prm.umenshm[prm.umenshm.Length-1 - k];
+                Console.WriteLine("um "+um);
+                char vic = prm.vichet[prm.vichet.Length-1 - k];
+                Console.WriteLine("vic "+vic);
+                int um1 = Convert.ToInt32(Convert.ToString(um));
+                Console.WriteLine("um1 "+um1);
+                int vc1 = Convert.ToInt32(Convert.ToString(vic));
+                Console.WriteLine("vc1 "+vc1);
+                prm.res += um1 + vc1;
+                Console.WriteLine("res "+prm.res);
+                k++;
+                Console.WriteLine("k "+k);
+            }
+
+                return prm.res ;
+        }
+
+        public static string viche(string vichet, string umenshm)
+        {
+            string c = Convert.ToString(Convert.ToInt32(prm.umenshm) - Convert.ToInt32(prm.vichet));
+            return c;
         }
     }
 
