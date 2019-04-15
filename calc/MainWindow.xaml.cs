@@ -162,14 +162,17 @@ namespace calc
         //// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//////////////////
         ///-----
          // колво знаков после запятой в уменьшаемом
-        public static int Counterumn(double umenshaemoe)
+       //  в вычитаемом
+        public static int Countervic(string vichetaemoe)
         {
-            return prm.umenshaemoe.ToString().Substring(prm.umenshaemoe.ToString().IndexOf(",") + 1).Length;
-        }
-        //  в вычитаемом
-        public static int Countervic(double vichetaemoe)
-        {
-            return prm.vichetaemoe.ToString().Substring(prm.vichetaemoe.ToString().IndexOf(",") + 1).Length;
+            string[] zap = vichetaemoe.Split(',');
+            if (zap.Length < 2)
+            {
+                return 0;
+            }
+            else 
+            // return prm.vichetaemoe.ToString().Substring(prm.vichetaemoe.ToString().IndexOf(",") + 1).Length;
+            return vichetaemoe.Split(',')[1].Length;            
         }
 
 
@@ -179,7 +182,7 @@ namespace calc
             vich.Text = vich.Text.Replace(".", ",");
             try
             {
-                prm.umenshaemoe = Convert.ToDouble(umensh.Text);
+                prm.umenshaemoe = umensh.Text;
             }
             catch
             {
@@ -187,20 +190,24 @@ namespace calc
             }
             try
             {
-                prm.vichetaemoe = Convert.ToDouble(vich.Text);
+                prm.vichetaemoe =vich.Text;
             }
             catch
             {
                 MessageBox.Show("Неверный формат данных", "Error", MessageBoxButton.OK);
             }
 
-            int shumensh = Counterumn(prm.umenshaemoe);
+            int shumensh = Countervic(prm.umenshaemoe);
             int shvich = Countervic(prm.vichetaemoe);
+
+            prm.bolsh = (shumensh > shvich) ? shumensh : shvich;
+            
 
             dlumns.Content = shumensh;
             dlvct.Content = shvich;
             prm.vichet = Convert.ToString(prm.vichetaemoe);
             prm.umenshm = Convert.ToString(prm.umenshaemoe);
+            
             if (shumensh > shvich)
             {
                 int k = shumensh - shvich;
@@ -220,8 +227,8 @@ namespace calc
                 }
             }
 
-            string celumendl = Convert.ToString(Math.Truncate(prm.umenshaemoe));
-            string celvichdl = Convert.ToString(Math.Truncate(prm.vichetaemoe));
+            string celumendl = Convert.ToString(Math.Truncate(Convert.ToDouble(prm.umenshaemoe)));
+            string celvichdl = Convert.ToString(Math.Truncate(Convert.ToDouble(prm.vichetaemoe)));
             umdl.Content = celumendl.Length;
             vcdl.Content = celvichdl.Length;
 
@@ -241,21 +248,38 @@ namespace calc
                 {
                     prm.umenshm = prm.umenshm.Insert(0, "0");
                     umensh.Text = prm.umenshm;
+                    
                 }
             }
 
-             //slozh(prm.vichet, prm.umenshm);
+            if (cbpm.SelectedIndex == 0)
+            {
+                slozh();
+            }
+            if (cbpm.SelectedIndex == 1)
+            {
+                viche();
+            }
             Console.WriteLine("prm.res " + prm.res);
             
-            vicres.Content = slozh(prm.vichet, prm.umenshm);
+            vicres.Content = slozh();
         }
-        public static string slozh(string vichet, string umenshm)
+        
+        /// //////сложение сложение сложение
+        
+        public static string slozh()
         { int k = 0;
             prm.res = "";
             int j = prm.umenshm.Length;
+            int per = 0;
             
-            for (int i = prm.umenshm.Length; i == 0 ; i--)
+            Console.WriteLine(prm.umenshm);
+            Console.WriteLine(prm.vichet);
+            prm.umenshm = prm.umenshm.Replace(",", "");
+            prm.vichet = prm.vichet.Replace(",", "");
+            for (int i = prm.umenshm.Length; i > 0 ; i--)
             {
+                
                 char um = prm.umenshm[prm.umenshm.Length-1 - k];
                 Console.WriteLine("um "+um);
                 char vic = prm.vichet[prm.vichet.Length-1 - k];
@@ -264,19 +288,69 @@ namespace calc
                 Console.WriteLine("um1 "+um1);
                 int vc1 = Convert.ToInt32(Convert.ToString(vic));
                 Console.WriteLine("vc1 "+vc1);
-                prm.res += um1 + vc1;
+                prm.res = Convert.ToString((um1 + vc1 +per)%10) + prm.res;
+                
+                per = Convert.ToInt32((um1 + vc1 + per)/10);
+                Console.WriteLine("per " + per);
+                
+               
                 Console.WriteLine("res "+prm.res);
                 k++;
                 Console.WriteLine("k "+k);
             }
+            if (per != 0)
+            {
+                prm.res = Convert.ToString(per) + prm.res;
+            }
 
-                return prm.res ;
+            prm.res = prm.res.Insert(prm.res.Length - prm.bolsh , ",");
+
+            return prm.res ;
         }
 
-        public static string viche(string vichet, string umenshm)
+/// ////////////// вычитание вычитание вычитание//////
+
+
+        public static string viche()
         {
-            string c = Convert.ToString(Convert.ToInt32(prm.umenshm) - Convert.ToInt32(prm.vichet));
-            return c;
+            int k = 0;
+            prm.res = "";
+            int j = prm.umenshm.Length;
+            int per = 0;
+
+            Console.WriteLine(prm.umenshm);
+            Console.WriteLine(prm.vichet);
+            prm.umenshm = prm.umenshm.Replace(",", "");
+            prm.vichet = prm.vichet.Replace(",", "");
+            for (int i = prm.umenshm.Length; i > 0; i--)
+            {
+
+                char um = prm.umenshm[prm.umenshm.Length - 1 - k];
+                Console.WriteLine("um " + um);
+                char vic = prm.vichet[prm.vichet.Length - 1 - k];
+                Console.WriteLine("vic " + vic);
+                int um1 = Convert.ToInt32(Convert.ToString(um));
+                Console.WriteLine("um1 " + um1);
+                int vc1 = Convert.ToInt32(Convert.ToString(vic));
+                Console.WriteLine("vc1 " + vc1);
+                prm.res = Convert.ToString((um1 - vc1 + per) % 10) + prm.res;
+
+                per = Convert.ToInt32((um1 - vc1 + per) / 10);
+                Console.WriteLine("per " + per);
+
+
+                Console.WriteLine("res " + prm.res);
+                k++;
+                Console.WriteLine("k " + k);
+            }
+            if (per != 0)
+            {
+                prm.res = Convert.ToString(per) + prm.res;
+            }
+
+            prm.res = prm.res.Insert(prm.res.Length - prm.bolsh, ",");
+
+            return prm.res;
         }
     }
 

@@ -22,10 +22,11 @@ namespace calc
         //public static in...... ОСТАНОВИТЕСЬ
         public static string ostatok;
         public static string znak;
-        public static double umenshaemoe;
-        public static double vichetaemoe;
+        public static string umenshaemoe;
+        public static string vichetaemoe;
         public static string vichet;
         public static string umenshm;
         public static string res;
+        public static int bolsh;
     }
 }
