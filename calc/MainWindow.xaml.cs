@@ -153,7 +153,7 @@ namespace calc
                 add += "0";
             }
             result += "__________\r\n";
-
+            // опять костыль :(
             result += mnj1 * mnj2;
             return result;
         }
@@ -255,14 +255,16 @@ namespace calc
             if (cbpm.SelectedIndex == 0)
             {
                 slozh();
+                vicres.Content = slozh();
             }
             if (cbpm.SelectedIndex == 1)
             {
                 viche();
+                vicres.Content = viche();
             }
             Console.WriteLine("prm.res " + prm.res);
             
-            vicres.Content = slozh();
+            
         }
         
         /// //////сложение сложение сложение
@@ -333,20 +335,21 @@ namespace calc
                 Console.WriteLine("um1 " + um1);
                 int vc1 = Convert.ToInt32(Convert.ToString(vic));
                 Console.WriteLine("vc1 " + vc1);
-                prm.res = Convert.ToString((um1 - vc1 + per) % 10) + prm.res;
-
-                per = Convert.ToInt32((um1 - vc1 + per) / 10);
+                if (um1 > vc1)
+                {
+                    um1 = 10 + um1;
+                }
+                prm.res = Convert.ToString((um1 - vc1));//% 10 + prm.res;
+                per = Convert.ToInt32((um1 - vc1));  //  / 10
                 Console.WriteLine("per " + per);
-
-
                 Console.WriteLine("res " + prm.res);
                 k++;
                 Console.WriteLine("k " + k);
             }
-            if (per != 0)
-            {
-                prm.res = Convert.ToString(per) + prm.res;
-            }
+                if (per != 0)
+                {
+                    prm.res = Convert.ToString(per) + prm.res;
+                }
 
             prm.res = prm.res.Insert(prm.res.Length - prm.bolsh, ",");
 
